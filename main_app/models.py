@@ -40,5 +40,4 @@ class Post(models.Model):
     date_time_spotted = models.DateTimeField()
     posting_date_time = models.DateTimeField(auto_now_add=True)
     list_of_needs = models.TextField()
-    volunteer_ids = models.ManyToManyField(User, related_name='volunteered_posts', blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='need_help')

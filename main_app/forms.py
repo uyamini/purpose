@@ -4,6 +4,10 @@ from .models import Post
 # from .models import User
 
 class PostForm(forms.ModelForm):
+    date_time_spotted = forms.DateTimeField(
+        widget=forms.TextInput(attrs={'class': 'datetime-input'})
+    )
+
     class Meta:
         model = Post
         fields = [

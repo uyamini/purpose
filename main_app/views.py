@@ -15,9 +15,12 @@ def create_post(request):
         if form.is_valid():
             form.save()
             return redirect('landing_page')
+        else:
+            print(form.errors)  # Print form errors for debugging
     else:
         form = PostForm()
     return render(request, 'main_app/create_post.html', {'form': form})
+
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
