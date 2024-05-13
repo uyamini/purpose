@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ user.username }}'s Profile</h1>
+<h2>Your Posts</h2>
+<ul>
+    {% for post in posts %}
+        <li>
+            <strong>{{ post.details }}</strong> - {{ post.status }}
+            <a href="{% url 'post_detail' post.id %}">View</a>
+            <a href="{% url 'edit_post' post.id %}">Edit</a>
+            <a href="{% url 'delete_post' post.id %}">Delete</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Volunteered Posts</h2>
+<ul>
+    {% for post in volunteered_posts %}
+        <li>
+            <strong>{{ post.details }}</strong> - {{ post.status }}
+            <a href="{% url 'post_detail' post.id %}">View</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
