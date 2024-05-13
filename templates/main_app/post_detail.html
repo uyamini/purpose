@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post Detail</title>
-    <link href="{% static 'src/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto py-8">
@@ -15,12 +16,11 @@
         <p>Posted at: {{ post.posting_date_time }}</p>
         <p>Status: {{ post.get_status_display }}</p>
         <p>Volunteers: {{ post.volunteer_ids.count }}</p>
-        {% if user == post.user %}
+        <div class="mt-4">
             <a href="{% url 'edit_post' post.id %}" class="px-4 py-2 bg-yellow-500 text-white rounded">Edit</a>
             <a href="{% url 'delete_post' post.id %}" class="px-4 py-2 bg-red-500 text-white rounded">Delete</a>
-        {% else %}
             <a href="{% url 'volunteer_post' post.id %}" class="px-4 py-2 bg-green-500 text-white rounded">Volunteer</a>
-        {% endif %}
+        </div>
     </div>
 </body>
 </html>
