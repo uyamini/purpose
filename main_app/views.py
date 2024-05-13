@@ -1,9 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post
+from .models import Post, User
 from .forms import PostForm
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.shortcuts import render, redirect
 
 def landing_page(request):
     posts = Post.objects.all().order_by('-posting_date_time')
@@ -15,12 +12,9 @@ def create_post(request):
         if form.is_valid():
             form.save()
             return redirect('landing_page')
-        else:
-            print(form.errors)  # Print form errors for debugging
     else:
         form = PostForm()
     return render(request, 'main_app/create_post.html', {'form': form})
-
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
@@ -46,32 +40,10 @@ def delete_post(request, post_id):
 
 def volunteer_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    # Simulate volunteering by adding a dummy user ID (since there's no user auth)
-    # You can replace this logic as needed
-    volunteer_id = 1  # Simulated volunteer ID
-    if volunteer_id not in post.volunteer_ids.all():
-        post.volunteer_ids.add(volunteer_id)
+    # assume volunteer ID is 1 (since there's no user auth)
+    volunteer_id = 1
+    user = User.objects.get(id=volunteer_id)
+    if user not in post.volunteer_ids.all():
+        post.volunteer_ids.add(user)
         post.save()
     return redirect('post_detail', post_id=post.id)
-
-# def signup(request):
-#     if request.method == 'POST':
-#         form = UserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             login(request, user)
-#             return redirect('landing_page')
-#     else:
-#         form = UserCreationForm()
-#     return render(request, 'registration/signup.html', {'form': form})
-
-# def login_view(request):
-#     if request.method == 'POST':
-#         form = AuthenticationForm(data=request.POST)
-#         if form.is_valid():
-#             user = form.get_user()
-#             login(request, user)
-#             return redirect('landing_page')
-#     else:
-#         form = AuthenticationForm()
-#     return render(request, 'registration/login.html', {'form': form})

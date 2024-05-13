@@ -1,9 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-from django.db import models
-from django.contrib.auth.models import AbstractUser
-
 class User(AbstractUser):
     user_score = models.IntegerField(default=0)
     email = models.EmailField(unique=True)
@@ -25,7 +22,6 @@ class User(AbstractUser):
         verbose_name='user permissions',
     )
 
-
 class Post(models.Model):
     STATUS_CHOICES = [
         ('need_help', 'Need Help'),
@@ -40,4 +36,6 @@ class Post(models.Model):
     date_time_spotted = models.DateTimeField()
     posting_date_time = models.DateTimeField(auto_now_add=True)
     list_of_needs = models.TextField()
+    volunteer_ids = models.ManyToManyField(User, related_name='volunteered_posts', blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='need_help')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
