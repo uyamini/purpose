@@ -1,7 +1,7 @@
 from django import forms
 from .models import Post
-# from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-# from .models import User
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from .models import User
 
 class PostForm(forms.ModelForm):
     date_time_spotted = forms.DateTimeField(
@@ -16,10 +16,10 @@ class PostForm(forms.ModelForm):
         ]
 
 
-# class CustomUserCreationForm(UserCreationForm):
-#     class Meta(UserCreationForm.Meta):
-#         model = User
-#         fields = UserCreationForm.Meta.fields + ('email',)
+class CustomUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = UserCreationForm.Meta.fields + ('email',)
 
 # class CustomAuthenticationForm(AuthenticationForm):
 #     class Meta(AuthenticationForm.Meta):

@@ -1,10 +1,13 @@
-{% extends 'base.html' %}
+<!-- templates/registration/signup.html -->
+{% extends "main_app/base.html" %}
+{% block title %}Sign Up{% endblock %}
 {% block content %}
-<h1>Sign Up</h1>
-<p class="red-text">{{ error_message }}</p>
-<form method="POST" action="{% url 'signup' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn">Sign Up</button>
-</form>
+<div class="container mx-auto py-8">
+    <h1 class="text-3xl font-bold mb-6">Sign Up</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Sign Up</button>
+    </form>
+</div>
 {% endblock %}

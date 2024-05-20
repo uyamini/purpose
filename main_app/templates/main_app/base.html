@@ -1,3 +1,4 @@
+<!-- base.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Purpose{% endblock %}</title>
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto py-8">
@@ -13,6 +15,7 @@
             <a href="{% url 'landing_page' %}" class="text-lg font-semibold text-blue-600">Home</a>
             {% if user.is_authenticated %}
                 <div>
+                    <a href="{% url 'create_post' %}" class="text-blue-600 px-4">Create Post</a>
                     <a href="{% url 'profile' %}" class="text-blue-600 px-4">Profile</a>
                     <form action="{% url 'logout' %}" method="post" style="display: inline;">
                         {% csrf_token %}

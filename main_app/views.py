@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model, login
 from .models import Post
 from .forms import PostForm
 from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm
 
 User = get_user_model()
 
@@ -62,18 +63,14 @@ def volunteer_post(request, post_id):
     return redirect('post_detail', post_id=post.id)
 
 def signup(request):
-    error_message = ''
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('landing_page')
-        else:
-            error_message = 'Invalid sign up - try again'
+            form.save()
+            return redirect('login')  # Redirect to the login page after successful sign-up
     else:
-        form = UserCreationForm()
-    return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message})
+        form = CustomUserCreationForm()
+    return render(request, 'registration/signup.html', {'form': form})
 
 @login_required
 def profile(request):
