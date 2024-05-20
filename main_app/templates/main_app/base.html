@@ -9,23 +9,23 @@
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100">
-    <div class="container mx-auto py-8">
+<body class="bg-gray-50 text-gray-900 font-sans leading-normal tracking-normal">
+    <div class="container mx-auto py-8 px-4 sm:px-8">
         <nav class="flex justify-between items-center bg-white shadow p-4 rounded mb-6">
-            <a href="{% url 'landing_page' %}" class="text-lg font-semibold text-blue-600">Home</a>
+            <a href="{% url 'landing_page' %}" class="text-xl font-semibold text-indigo-600 hover:text-indigo-400 transition duration-300">Home</a>
             {% if user.is_authenticated %}
-                <div>
-                    <a href="{% url 'create_post' %}" class="text-blue-600 px-4">Create Post</a>
-                    <a href="{% url 'profile' %}" class="text-blue-600 px-4">Profile</a>
-                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                <div class="space-x-4">
+                    <a href="{% url 'create_post' %}" class="text-indigo-600 hover:text-indigo-400 transition duration-300">Create Post</a>
+                    <a href="{% url 'profile' %}" class="text-indigo-600 hover:text-indigo-400 transition duration-300">Profile</a>
+                    <form action="{% url 'logout' %}" method="post" class="inline">
                         {% csrf_token %}
-                        <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded">Logout</button>
+                        <button type="submit" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded transition duration-300">Logout</button>
                     </form>
                 </div>
             {% else %}
-                <div>
-                    <a href="{% url 'signup' %}" class="text-blue-600 px-4">Sign Up</a>
-                    <a href="{% url 'login' %}" class="text-blue-600 px-4">Login</a>
+                <div class="space-x-4">
+                    <a href="{% url 'signup' %}" class="text-indigo-600 hover:text-indigo-400 transition duration-300">Sign Up</a>
+                    <a href="{% url 'login' %}" class="text-indigo-600 hover:text-indigo-400 transition duration-300">Login</a>
                 </div>
             {% endif %}
         </nav>
