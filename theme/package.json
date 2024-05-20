@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tailwindcss build ./static/src/styles.css -o ./static/css/styles.css",
-    "build:css": "tailwindcss build src/styles.css -o dist/styles.css"
+    "build:css": "tailwindcss build ./static/src/styles.css -o ./static/css/styles.css"
   },
   "devDependencies": {
     "tailwindcss": "^3.0.0",
