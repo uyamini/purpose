@@ -1,29 +1,23 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-</head>
-<body class="bg-gray-100">
-    <div class="container mx-auto py-8">
-        <h1 class="text-3xl font-bold mb-6">Landing Page</h1>
-        <div class="mb-4">
-            <a href="{% url 'create_post' %}" class="px-4 py-2 bg-blue-500 text-white rounded">Create New Post</a>
-        </div>
-        <ul>
-            {% for post in posts %}
-                <li class="mb-4 p-4 bg-white shadow">
-                    <h2 class="text-xl font-semibold">{{ post.location_city }}, {{ post.location_state }}</h2>
-                    <p>{{ post.details }}</p>
-                    <p>Status: {{ post.get_status_display }}</p>
-                    <p>Volunteers: {{ post.volunteer_ids.count }}</p>
-                    <a href="{% url 'post_detail' post.id %}" class="px-4 py-2 bg-green-500 text-white rounded">View Details</a>
-                </li>
-            {% endfor %}
-        </ul>
+{% extends 'main_app/base.html' %}
+
+{% block title %}Landing Page{% endblock %}
+
+{% block content %}
+<div class="container mx-auto py-8">
+    <h1 class="text-3xl font-bold mb-6">Landing Page</h1>
+    <div class="mb-4">
+        <a href="{% url 'create_post' %}" class="px-4 py-2 bg-blue-500 text-white rounded">Create New Post</a>
     </div>
-</body>
-</html>
+    <ul>
+        {% for post in posts %}
+            <li class="mb-4 p-4 bg-white shadow">
+                <h2 class="text-xl font-semibold">{{ post.location_city }}, {{ post.location_state }}</h2>
+                <p>{{ post.details }}</p>
+                <p>Status: {{ post.get_status_display }}</p>
+                <p>Volunteers: {{ post.volunteer_ids.count }}</p>
+                <a href="{% url 'post_detail' post.id %}" class="px-4 py-2 bg-green-500 text-white rounded">View Details</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

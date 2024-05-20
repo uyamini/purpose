@@ -1,26 +1,20 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Detail</title>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-</head>
-<body class="bg-gray-100">
-    <div class="container mx-auto py-8">
-        <h1 class="text-3xl font-bold mb-6">Post Detail</h1>
-        <h2 class="text-xl font-semibold">{{ post.location_city }}, {{ post.location_state }}</h2>
-        <p>{{ post.details }}</p>
-        <p>Spotted at: {{ post.date_time_spotted }}</p>
-        <p>Posted at: {{ post.posting_date_time }}</p>
-        <p>Status: {{ post.get_status_display }}</p>
-        <p>Volunteers: {{ post.volunteer_ids.count }}</p>
-        <div class="mt-4">
-            <a href="{% url 'edit_post' post.id %}" class="px-4 py-2 bg-yellow-500 text-white rounded">Edit</a>
-            <a href="{% url 'delete_post' post.id %}" class="px-4 py-2 bg-red-500 text-white rounded">Delete</a>
-            <a href="{% url 'volunteer_post' post.id %}" class="px-4 py-2 bg-green-500 text-white rounded">Volunteer</a>
-        </div>
+{% extends 'main_app/base.html' %}
+
+{% block title %}Post Detail{% endblock %}
+
+{% block content %}
+<div class="container mx-auto py-8">
+    <h1 class="text-3xl font-bold mb-6">Post Detail</h1>
+    <h2 class="text-xl font-semibold">{{ post.location_city }}, {{ post.location_state }}</h2>
+    <p>{{ post.details }}</p>
+    <p>Spotted at: {{ post.date_time_spotted }}</p>
+    <p>Posted at: {{ post.posting_date_time }}</p>
+    <p>Status: {{ post.get_status_display }}</p>
+    <p>Volunteers: {{ post.volunteer_ids.count }}</p>
+    <div class="mt-4">
+        <a href="{% url 'edit_post' post.id %}" class="px-4 py-2 bg-yellow-500 text-white rounded">Edit</a>
+        <a href="{% url 'delete_post' post.id %}" class="px-4 py-2 bg-red-500 text-white rounded">Delete</a>
+        <a href="{% url 'volunteer_post' post.id %}" class="px-4 py-2 bg-green-500 text-white rounded">Volunteer</a>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}

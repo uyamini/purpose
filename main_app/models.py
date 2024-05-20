@@ -1,10 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, BaseUserManager
+
+class UserManager(BaseUserManager):
+    pass
 
 class User(AbstractUser):
     user_score = models.IntegerField(default=0)
     email = models.EmailField(unique=True)
     posts = models.ManyToManyField('Post', related_name='volunteers')
+    objects = UserManager()
 
     groups = models.ManyToManyField(
         'auth.Group',

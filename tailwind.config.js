@@ -1,9 +1,13 @@
 module.exports = {
-  content: [
+  purge: [
     './templates/**/*.html',
-    './theme/static/src/**/*.css',
+    './main_app/templates/**/*.html',
   ],
+  darkMode: false,
   theme: {
+    extend: {},
+  },
+  variants: {
     extend: {},
   },
   plugins: [],
