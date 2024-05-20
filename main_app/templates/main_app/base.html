@@ -4,19 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Site{% endblock %}</title>
+    <title>{% block title %}Purpose{% endblock %}</title>
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto py-8">
-        <nav>
-            <a href="{% url 'landing_page' %}">Home</a>
+        <nav class="flex justify-between items-center bg-white shadow p-4 rounded mb-6">
+            <a href="{% url 'landing_page' %}" class="text-lg font-semibold text-blue-600">Home</a>
             {% if user.is_authenticated %}
-                <a href="{% url 'profile' %}">Profile</a>
-                <a href="{% url 'logout' %}">Logout</a>
+                <div>
+                    <a href="{% url 'profile' %}" class="text-blue-600 px-4">Profile</a>
+                    <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded">Logout</button>
+                    </form>
+                </div>
             {% else %}
-                <a href="{% url 'signup' %}">Sign Up</a>
-                <a href="{% url 'login' %}">Login</a>
+                <div>
+                    <a href="{% url 'signup' %}" class="text-blue-600 px-4">Sign Up</a>
+                    <a href="{% url 'login' %}" class="text-blue-600 px-4">Login</a>
+                </div>
             {% endif %}
         </nav>
         {% block content %}{% endblock %}
