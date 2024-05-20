@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-7am6s!*nd5915pib6gow(k-mvqx%@m11a651hhm8uv@0ise7xz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://purpose-app-18e8b505069d.herokuapp.com/']
 
 # Application definition
 TAILWIND_APP_NAME = 'theme'
