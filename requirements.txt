@@ -1,0 +1,9 @@
+certifi @ file:///private/tmp/certifi-20240307-4909-d45d8o/certifi-2024.2.2
+distlib @ file:///private/tmp/python-distlib-20231213-5303-70ss3l/distlib-0.3.8
+filelock @ file:///private/tmp/python-filelock-20231112-5555-1ys9gwc/filelock-3.13.1/dist/filelock-3.13.1-py3-none-any.whl#sha256=57dbda9b35157b05fb3e58ee91448612eb674172fab98ee235ccb0b5bee19a1c
+numpy @ file:///private/tmp/numpy-20240206-6022-nq9o9h/numpy-1.26.4
+openvino==2024.0.0
+packaging==24.0
+platformdirs @ file:///private/tmp/python-platformdirs-20231204-5443-mdrjzo/platformdirs-4.1.0
+TBB @ file:///private/tmp/tbb-20231202-5149-eakl1q/oneTBB-2021.11.0/python
+wheel @ file:///usr/local/Cellar/python%403.12/3.12.2_1/libexec/wheel-0.43.0-py3-none-any.whl#sha256=b66b1ea367126425ba6ef889a0c0b800a291c380b7c313f2198876288fb9be06
